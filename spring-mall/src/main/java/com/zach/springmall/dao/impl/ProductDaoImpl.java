@@ -31,17 +31,25 @@ public class ProductDaoImpl implements ProductDao {
 
         Map<String, Object> map = new HashMap<>();
 
+        //查詢條件
         if (productQueryParams.getCategory() != null) {
             sql = sql + " AND category = :category";
             map.put("category", productQueryParams.getCategory().name());
         }
 
-        if(productQueryParams.getSearch() != null){
+        if (productQueryParams.getSearch() != null) {
             sql = sql + " AND product_name LIKE :search";
             map.put("search", "%" + productQueryParams.getSearch() + "%");
         }
+
         //Controller的@RequestParam 有給預設值所以不用判斷是否為null
+        //排序
         sql = sql + " ORDER BY " + productQueryParams.getOrderBy() + " " + productQueryParams.getSort();
+
+        //分頁
+        sql = sql + " LIMIT :limit OFFSET :offset";
+        map.put("limit", productQueryParams.getLimit());
+        map.put("offset", productQueryParams.getOffset());
 
         List<Product> productList = namedParameterJdbcTemplate.query(sql, map, new ProductRowMapper());
 
