@@ -1,17 +1,14 @@
 package com.zach.springmall.service.impl;
 
-import com.zach.springmall.constant.ProductCategory;
 import com.zach.springmall.dao.ProductDao;
+import com.zach.springmall.dto.ProductQueryParams;
 import com.zach.springmall.dto.ProductRequest;
 import com.zach.springmall.model.Product;
 import com.zach.springmall.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @Component
 public class ProductServiceImpl implements ProductService {
@@ -20,8 +17,8 @@ public class ProductServiceImpl implements ProductService {
     private ProductDao productDao;
 
     @Override
-    public List<Product> getProducts(ProductCategory category, String search) {
-        return productDao.getProducts(category, search);
+    public List<Product> getProducts(ProductQueryParams productQueryParams) {
+        return productDao.getProducts(productQueryParams);
     }
 
     @Override

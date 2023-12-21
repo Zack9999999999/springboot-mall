@@ -1,6 +1,7 @@
 package com.zach.springmall.controller;
 
 import com.zach.springmall.constant.ProductCategory;
+import com.zach.springmall.dto.ProductQueryParams;
 import com.zach.springmall.dto.ProductRequest;
 import com.zach.springmall.model.Product;
 import com.zach.springmall.service.ProductService;
@@ -23,7 +24,11 @@ public class ProductController {
             @RequestParam(required = false) ProductCategory category,
             @RequestParam(required = false) String search
     ) {
-        List<Product> productList = productService.getProducts(category, search);
+        ProductQueryParams productQueryParams = new ProductQueryParams();
+        productQueryParams.setCategory(category);
+        productQueryParams.setSearch(search);
+
+        List<Product> productList = productService.getProducts(productQueryParams);
 
         return ResponseEntity.status(HttpStatus.OK).body(productList);
     }
