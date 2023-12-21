@@ -1,5 +1,6 @@
 package com.zach.springmall.service.impl;
 
+import com.zach.springmall.constant.ProductCategory;
 import com.zach.springmall.dao.ProductDao;
 import com.zach.springmall.dto.ProductRequest;
 import com.zach.springmall.model.Product;
@@ -19,8 +20,8 @@ public class ProductServiceImpl implements ProductService {
     private ProductDao productDao;
 
     @Override
-    public List<Product> getProducts() {
-        return productDao.getProducts();
+    public List<Product> getProducts(ProductCategory category, String search) {
+        return productDao.getProducts(category, search);
     }
 
     @Override
