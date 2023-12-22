@@ -1,6 +1,6 @@
 package com.zach.springmall.dao.impl;
 
-import com.zach.springmall.dao.UserDAO;
+import com.zach.springmall.dao.UserDao;
 import com.zach.springmall.dto.UserRegisterRequest;
 import com.zach.springmall.model.User;
 import com.zach.springmall.rowmapper.UserRowMapper;
@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.Map;
 
 @Component
-public class UserDAOimpl implements UserDAO {
+public class UserDaoImpl implements UserDao {
 
     @Autowired
     private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
@@ -32,9 +32,26 @@ public class UserDAOimpl implements UserDAO {
 
         List<User> userList = namedParameterJdbcTemplate.query(sql, map, new UserRowMapper());
 
-        if(userList.size() > 0){
+        if (userList.size() > 0) {
             return userList.get(0);
-        }else{
+        } else {
+            return null;
+        }
+    }
+
+    @Override
+    public User getUserByEmail(String email) {
+        String sql = "SELECT user_id, email, password, created_date, last_modified_date " +
+                "FROM user WHERE email = :email";
+
+        Map<String, Object> map = new HashMap<>();
+        map.put("email", email);
+
+        List<User> userList = namedParameterJdbcTemplate.query(sql, map, new UserRowMapper());
+
+        if (userList.size() > 0) {
+            return userList.get(0);
+        } else {
             return null;
         }
     }

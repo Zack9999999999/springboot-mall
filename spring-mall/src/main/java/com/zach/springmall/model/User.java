@@ -1,10 +1,16 @@
 package com.zach.springmall.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.Date;
 
 public class User {
     private Integer user_id;
+
+    //@JsonProperty("e_mail") 改變回傳給前端的json email的名稱
     private String email;
+    @JsonIgnore
     private String password;
     private Date created_date;
     private Date last_modified_date;
