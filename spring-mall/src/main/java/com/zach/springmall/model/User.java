@@ -6,21 +6,21 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.Date;
 
 public class User {
-    private Integer user_id;
+    private Integer userId;
 
     //@JsonProperty("e_mail") 改變回傳給前端的json email的名稱
     private String email;
     @JsonIgnore
     private String password;
-    private Date created_date;
-    private Date last_modified_date;
+    private Date createdDate;
+    private Date lastModifiedDate;
 
-    public Integer getUser_id() {
-        return user_id;
+    public Integer getUserId() {
+        return userId;
     }
 
-    public void setUser_id(Integer user_id) {
-        this.user_id = user_id;
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
     public String getEmail() {
@@ -39,19 +39,19 @@ public class User {
         this.password = password;
     }
 
-    public Date getCreated_date() {
-        return created_date;
+    public Date getCreatedDate() {
+        return createdDate;
     }
 
-    public void setCreated_date(Date created_date) {
-        this.created_date = created_date;
+    public void setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
     }
 
-    public Date getLast_modified_date() {
-        return last_modified_date;
+    public Date getLastModifiedDate() {
+        return lastModifiedDate;
     }
 
-    public void setLast_modified_date(Date last_modified_date) {
-        this.last_modified_date = last_modified_date;
+    public void setLastModifiedDate(Date lastModifiedDate) {
+        this.lastModifiedDate = lastModifiedDate;
     }
 }

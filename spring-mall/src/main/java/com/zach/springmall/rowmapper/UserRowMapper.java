@@ -10,11 +10,11 @@ public class UserRowMapper implements RowMapper {
     @Override
     public Object mapRow(ResultSet rs, int i) throws SQLException {
         User user = new User();
-        user.setUser_id(rs.getInt("user_id"));
+        user.setUserId(rs.getInt("user_id"));
         user.setEmail(rs.getString("user_id"));
         user.setPassword(rs.getString("password"));
-        user.setCreated_date(rs.getTimestamp("created_date"));
-        user.setLast_modified_date(rs.getTimestamp("last_modified_date"));
+        user.setCreatedDate(rs.getTimestamp("created_date"));
+        user.setLastModifiedDate(rs.getTimestamp("last_modified_date"));
 
         return user;
     }
